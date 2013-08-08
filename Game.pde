@@ -11,11 +11,11 @@ public class Game{
     for(int i = 0; i < xArr.length; i += 1 ){
       xArr[i] = 0;
       yArr[i] = 0;
-    }
+      //myPath[i] = 0;
+    }    
   }
 
-  void setSpotty(){   
-    
+  void setSpotty(){       
     spotty = new Hamster();
     index = spotty.put(index,1);
   }
@@ -45,10 +45,13 @@ public class Game{
     fill(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)), 200);
     itemcounter = 0;
     newgame = true;
+    
+    itemCounter = 0;
+    prevmyItem = 0;
+    myItem = 0;
   }
   
-  void showPoints(){
-   //float xyDist;
+  void showPoints(){  
    textSize(12); 
    fill(0);
    text("Food items", 10, 25);
@@ -56,22 +59,33 @@ public class Game{
    //text("Path lenght -> " + xArr.length, 10, 22);
    for (int i = 0; i < xArr.length; i += 1 ){  
      text(str(i)+"  ->     "+str(xArr[i])+",    "+str(yArr[i])+"\n", 10, 75+i*20);     
-   }
-   //xyDist = dist(xArr[0],yArr[0],xArr[1],yArr[1]);
-   //xyDist = dist(xArr[0],yArr[0],xArr[2],yArr[2]);   
+   } 
  }
    
-   String ordered(){ 
-       float dxy = 0;
-       String msg = "";
-       strokeWeight(4);
-       stroke(148, 107, 132, 100); //same color as its button
-       for (int i = 0; i < xArr.length-1; i += 1 ){  
-         line(xArr[i], yArr[i], xArr[i+1], yArr[i+1]);
-         dxy += dist(xArr[i], yArr[i], xArr[i+1], yArr[i+1]);        
-       }
-       print("Total distance = "+round(dxy)+"\n");
-       msg = "Total distance = "+round(dxy)+"\n";
-      return msg;              
-   } 
+  String ordered(){ 
+    float dxy = 0;
+    String msg = "";
+    strokeWeight(4);
+    stroke(148, 107, 132, 100); //same color as its button
+    for (int i = 0; i < xArr.length-1; i += 1 ){  
+      line(xArr[i], yArr[i], xArr[i+1], yArr[i+1]);
+      dxy += dist(xArr[i], yArr[i], xArr[i+1], yArr[i+1]);        
+    }
+    print("Total distance = "+round(dxy)+"\n");
+    msg = "Total distance = "+round(dxy)+"\n";
+  return msg;              
+  } 
+  
+  void getmyPath(int prevmyItem, int myItem){
+    strokeWeight(4);
+    stroke(43, 142, 48, 100); //same color as its button
+    line(xArr[prevmyItem], yArr[prevmyItem], xArr[myItem], yArr[myItem]);
+    print("prevItem = " + prevmyItem + "\n");
+    print("myItem = " + myItem + "\n");
+     // obtener orden en un vector, esto será el índice para recorrer xArr
+     // por ejemplo: 3,5,2,1,0,7,6,8
+     // el recorrido es ese
+     
+     
+   }
  }

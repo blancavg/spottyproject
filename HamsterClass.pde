@@ -1,5 +1,5 @@
 
-//set spotty & food items in the arena
+/* set spotty & food items in the arena */
 public class Hamster{
   int xRan;
   int yRan;
@@ -7,24 +7,22 @@ public class Hamster{
   float pct = 0.0;  // Percentage traveled (0.0 to 1.0)    
    
   int put(int index, int quantity){
-   xRan = int(random(minX, maxX));
-   yRan = int(random(minY, maxY));
+  xRan = int(random(minX, maxX));
+  yRan = int(random(minY, maxY));
        
-    fill(250, 197, 216);
-    rect(xRan, yRan, 50, 50);
+  fill(250, 197, 216);
+  rect(xRan, yRan, 50, 50);
     
-    PImage img;
-    img = loadImage("hamsterIcon1.png");    
-    noStroke();    
-    image(img, xRan, yRan, 50, 50);    
-    xArr[index] = xRan;   // save position
-    yArr[index] = yRan;
-    index += 1;    
-   return index;
+  PImage img;
+  img = loadImage("hamsterIcon1.png");    
+  noStroke();    
+  image(img, xRan, yRan, 50, 50);    
+  xArr[index] = xRan;   // save position
+  yArr[index] = yRan;
+  index += 1;    
+  return index;
   }    
-    
 }
-
 
 public class Food{
   int xRan, yRan;   
@@ -60,7 +58,7 @@ public class Candy extends Food{
       xRan = int(random(minX, maxX));
       yRan = int(random(minY, maxY));
       
-      do{
+      do {
       overlap = overlapP(xRan, yRan);
       
       if (overlap == true){
@@ -71,21 +69,18 @@ public class Candy extends Food{
       else{
         //print("no overlap\n");        
       }
-      }
-      while(overlap == true);      
-           
+     } while(overlap == true);               
             
       fill(204, 102, 0);
-      rect(xRan, yRan, 50, 50);  
+      rect(xRan, yRan, 50, 50);       
       
-      
-      // set candies
+      /* set candies */
       PImage img;
       img = loadImage("candy.png");      
       noStroke();
       image(img, xRan, yRan, 50, 50);
       
-     //label
+     /* label */
       itemcounter += 1;
       fill(191, 94, 94,200);
       rect(xRan + 20, yRan + 17, 10,10);
@@ -100,8 +95,7 @@ public class Candy extends Food{
   }
 }
 
-public class Apple extends Food{
-  
+public class Apple extends Food{  
   int put(int index, int quantity){
     for (int i = 1; i < quantity; i += 1 ){
       xRan = int(random(minX, maxX));
@@ -114,22 +108,21 @@ public class Apple extends Food{
         //print("overlap\n");
         xRan = int(random(minX, maxX));
         yRan = int(random(minY, maxY));        
-      }
-      else{
+      } else{
         //print("nooverlap\n");        
       }
-      }
-      while(overlap == true);   
+     } while(overlap == true);   
       
       fill(198, 94, 94);
       rect(xRan, yRan, 50, 50);
-      //set apples
+      
+      /* set apples */
       PImage img;
       img = loadImage("apple.png");      
       noStroke();
       image(img, xRan, yRan, 50, 50);
       
-      //label
+      /* label */
       itemcounter += 1;
       fill(61, 152, 62,250);
       rect(xRan + 11, yRan + 11, 10,10);
@@ -139,33 +132,29 @@ public class Apple extends Food{
       xArr[index] = xRan;   // save position
       yArr[index] = yRan;
       index += 1;
-  }
+    }
     return index;
   }
 }
 
-public class Cheese extends Food{
-  
+public class Cheese extends Food{  
   int put(int index, int quantity){
     for (int i = 1; i < quantity; i += 1 ){
     xRan = int(random(minX, maxX));
     yRan = int(random(minY, maxY));
     
-    do{
-      overlap = overlapP(xRan, yRan);
-      
+    do {
+      overlap = overlapP(xRan, yRan);      
       if (overlap == true){
         //print("overlapX\n");
         xRan = int(random(minX, maxX));
         yRan = int(random(minY, maxY));        
-      }
-      else{
+      } else{
         //print("no overlap\n");        
-      }
-      }
-      while(overlap == true);
-    //set cheese
+        }
+      } while(overlap == true);
     
+    /* set cheese */
     fill(250, 237, 169);
     rect(xRan, yRan, 50, 50);
     
@@ -174,7 +163,7 @@ public class Cheese extends Food{
     noStroke();
     image(img, xRan, yRan, 50, 50);
     
-    //label
+    /* label */
     itemcounter += 1;
     fill(247, 221, 72,200);
     rect(xRan + 24, yRan + 15, 11,11);
@@ -184,39 +173,35 @@ public class Cheese extends Food{
     xArr[index] = xRan;   // save position
     yArr[index] = yRan;
     index += 1;
-  }
+    }
     return index;
   }
 }
 
-public class Cupcake extends Food{
-  
+public class Cupcake extends Food{  
   int put(int index, int quantity){
     for (int i = 1; i < quantity; i += 1 ){
     xRan = int(random(minX, maxX));
     yRan = int(random(minY, maxY));
-    do{
-      overlap = overlapP(xRan, yRan);
-      
+    do {
+      overlap = overlapP(xRan, yRan);      
       if (overlap == true){
         //print("overlap en X\n");
         xRan = int(random(minX, maxX));
         yRan = int(random(minY, maxY));        
-      }
-      else{
+      } else{
         //print("no overlap en X\n");        
-      }
-      }
-      while(overlap == true);
+        }
+      } while(overlap == true);
     fill(111, 184, 216);
-    rect(xRan, yRan, 50, 50);
-    
+    rect(xRan, yRan, 50, 50);    
     
     PImage img;
     img = loadImage("cupcake.png");      
     noStroke();
     image(img, xRan, yRan, 50, 50);
-    //label
+    
+    /* set label */
     itemcounter += 1;
     fill(112, 165, 185,250);
     rect(xRan + 20, yRan + 30, 11,11);
@@ -226,8 +211,7 @@ public class Cupcake extends Food{
     xArr[index] = xRan;   // save position
     yArr[index] = yRan;   
     index = index + 1; 
-  }
+    }
     return index;
-  }  
-  
+  }   
 }

@@ -1,5 +1,5 @@
 // spotty the hungry hamster
-///*@pjs preload="apple.png,candy.png,cheese.png,cupcake.png,hamsterIcon1.png,inactiveNew.png,inactiveOrdered.png,intro.png";*/
+/*@pjs preload="apple.png,candy.png,cheese.png,cupcake.png,hamsterIcon1.png,inactiveNew.png,inactiveOrdered.png,intro.png";*/
 
 int xArr[] = new int[9];
 int yArr[] = new int[9];
@@ -105,19 +105,23 @@ void draw() {
  bNew.display();
  //bMypath.display();
  bOrdered.display();
- }
  
- void mousePressed(){      
-   print(mouseX+","+mouseY+"\n"); 
+ if(mousePressed){
    for (int i = 0; i < xArr.length; i += 1 ){
-   if ((mouseX >= xArr[i]) && (mouseX <= xArr[i] + 50) && (mouseY >= yArr[i]) && (mouseY <= yArr[i] + 50)){
-     print("You are over item:"+i+"\n");
-     if (i==8){
-       setMsgSpotty("you tickled me!", 12);
-       player3.play();
+     if ((mouseX >= xArr[i]) && (mouseX <= xArr[i] + 50) && (mouseY >= yArr[i]) && (mouseY <= yArr[i] + 50)){
+       print("You are over item:"+i+"\n");
+       if (i==8){
+         setMsgSpotty("you tickled me!", 12);
+         player3.stop();
+         player3.play();
+       }
      }
+   }//end for
    }
  }
+ 
+ void mousePressed(){     
+   
  
   if(bNew.mousePressed()){
     println("New game - pressed");   
